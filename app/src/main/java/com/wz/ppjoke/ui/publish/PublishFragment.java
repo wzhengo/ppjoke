@@ -1,4 +1,4 @@
-package com.wz.ppjoke.ui.home;
+package com.wz.ppjoke.ui.publish;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -14,9 +14,10 @@ import androidx.lifecycle.ViewModelProviders;
 
 import com.wz.libnavannotation.FragmentDestination;
 import com.wz.ppjoke.R;
+import com.wz.ppjoke.ui.home.HomeViewModel;
 
-@FragmentDestination(pageUrl = "main/tabs/home",asStarter = true)
-public class HomeFragment extends Fragment {
+@FragmentDestination(pageUrl = "main/tabs/publish")
+public class PublishFragment extends Fragment {
 
     private HomeViewModel homeViewModel;
 

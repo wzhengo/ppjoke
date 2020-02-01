@@ -129,16 +129,16 @@ public class NavProcessor extends AbstractProcessor {
         return true;
     }
 
-    private void handleDestination(Set<? extends Element> elements, Class<? extends Annotation> annotationClazz, HashMap<String, JSONObject> destMap) {
+    private void handleDestination(Set<? extends Element> elements, Class<? extends Annotation> annotationClass, HashMap<String, JSONObject> destMap) {
         for (Element element : elements) {
             TypeElement typeElement = (TypeElement) element;
             String pageUrl = null;
-            final String clazzName = typeElement.getQualifiedName().toString();
-            final int id = Math.abs(clazzName.hashCode());
+            final String className = typeElement.getQualifiedName().toString();
+            final int id = Math.abs(className.hashCode());
             boolean needLogin = false;
             boolean asStarter = false;
             boolean isFragment = false;
-            final Annotation annotation = typeElement.getAnnotation(annotationClazz);
+            final Annotation annotation = typeElement.getAnnotation(annotationClass);
             if (annotation instanceof FragmentDestination) {
                 FragmentDestination dest = (FragmentDestination) annotation;
                 pageUrl = dest.pageUrl();
@@ -154,14 +154,14 @@ public class NavProcessor extends AbstractProcessor {
             }
 
             if (destMap.containsKey(pageUrl)) {
-                messager.printMessage(Diagnostic.Kind.ERROR, "不同的页面不允许使用相同的pageUrl：" + clazzName);
+                messager.printMessage(Diagnostic.Kind.ERROR, "不同的页面不允许使用相同的pageUrl：" + className);
             } else {
                 final JSONObject object = new JSONObject();
                 object.put("id", id);
                 object.put("needLogin", needLogin);
                 object.put("asStarter", asStarter);
                 object.put("pageUrl", pageUrl);
-                object.put("clazzName", clazzName);
+                object.put("className", className);
                 object.put("isFragment", isFragment);
                 destMap.put(pageUrl, object);
             }

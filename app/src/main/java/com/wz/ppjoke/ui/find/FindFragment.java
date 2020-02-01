@@ -1,4 +1,4 @@
-package com.wz.ppjoke.ui.notifications;
+package com.wz.ppjoke.ui.find;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -14,19 +14,21 @@ import androidx.lifecycle.ViewModelProviders;
 
 import com.wz.libnavannotation.FragmentDestination;
 import com.wz.ppjoke.R;
+import com.wz.ppjoke.ui.home.HomeViewModel;
 
-@FragmentDestination(pageUrl = "main/tabs/notification")
-public class NotificationsFragment extends Fragment {
+@FragmentDestination(pageUrl = "main/tabs/find")
+public class FindFragment extends Fragment {
 
-    private NotificationsViewModel notificationsViewModel;
+    private HomeViewModel homeViewModel;
 
+    @Override
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
-        notificationsViewModel =
-                ViewModelProviders.of(this).get(NotificationsViewModel.class);
-        View root = inflater.inflate(R.layout.fragment_notifications, container, false);
-        final TextView textView = root.findViewById(R.id.text_notifications);
-        notificationsViewModel.getText().observe(this, new Observer<String>() {
+        homeViewModel =
+                ViewModelProviders.of(this).get(HomeViewModel.class);
+        View root = inflater.inflate(R.layout.fragment_home, container, false);
+        final TextView textView = root.findViewById(R.id.text_home);
+        homeViewModel.getText().observe(this, new Observer<String>() {
             @Override
             public void onChanged(@Nullable String s) {
                 textView.setText(s);
