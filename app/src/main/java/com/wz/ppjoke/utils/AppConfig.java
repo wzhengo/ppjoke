@@ -4,6 +4,7 @@ import android.content.res.AssetManager;
 
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.TypeReference;
+import com.wz.ppjoke.model.BottomBar;
 import com.wz.ppjoke.model.Destination;
 
 import java.io.BufferedReader;
@@ -15,6 +16,7 @@ import java.util.HashMap;
 public class AppConfig {
 
     private static HashMap<String, Destination> sDestConfig;
+    private static BottomBar sBottomBar;
 
     public static HashMap<String, Destination> getDestConfig() {
         if (sDestConfig == null) {
@@ -24,6 +26,14 @@ public class AppConfig {
                     });
         }
         return sDestConfig;
+    }
+
+    public static BottomBar getBottomBarConfig() {
+        if (sBottomBar == null) {
+            String content = parseFile("main_tabs_config.json");
+            sBottomBar = JSON.parseObject(content, BottomBar.class);
+        }
+        return sBottomBar;
     }
 
     private static String parseFile(String fileName) {
