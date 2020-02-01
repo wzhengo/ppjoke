@@ -1,0 +1,26 @@
+{
+  "main/tabs/dash": {
+    "isFragment": true,
+    "asStarter": false,
+    "needLogin": false,
+    "pageUrl": "main/tabs/dash",
+    "id": 1280042207,
+    "clazzName": "com.wz.ppjoke.ui.dashboard.DashboardFragment"
+  },
+  "main/tabs/home": {
+    "isFragment": true,
+    "asStarter": true,
+    "needLogin": false,
+    "pageUrl": "main/tabs/home",
+    "id": 1460262667,
+    "clazzName": "com.wz.ppjoke.ui.home.HomeFragment"
+  },
+  "main/tabs/notification": {
+    "isFragment": true,
+    "asStarter": false,
+    "needLogin": false,
+    "pageUrl": "main/tabs/notification",
+    "id": 299674313,
+    "clazzName": "com.wz.ppjoke.ui.notifications.NotificationsFragment"
+  }
+}
