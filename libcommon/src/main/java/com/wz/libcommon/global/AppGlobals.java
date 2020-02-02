@@ -1,4 +1,4 @@
-package com.wz.ppjoke.utils;
+package com.wz.libcommon.global;
 
 import android.app.Application;
 
