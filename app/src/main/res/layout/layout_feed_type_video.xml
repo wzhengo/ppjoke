@@ -8,10 +8,6 @@
             name="feed"
             type="Feed" />
 
-        <variable
-            name="lifeCycleOwner"
-            type="androidx.lifecycle.LifecycleOwner" />
-
         <import type="com.wz.ppjoke.model.Feed" />
 
     </data>
@@ -30,8 +26,7 @@
 
         <include
             layout="@layout/layout_feed_text"
-            app:feedText="@{feed.feeds_text}"
-            app:lines="@{3}" />
+            app:feedText="@{feed.feeds_text}" />
 
 
         <!--   视频区域-->
@@ -53,7 +48,6 @@
         <include
             android:id="@+id/interaction_binding"
             layout="@layout/layout_feed_interaction"
-            app:feed="@{feed}"
-            app:lifeCycleOwner="@{lifeCycleOwner}" />
+            app:feed="@{feed}" />
     </LinearLayout>
 </layout>

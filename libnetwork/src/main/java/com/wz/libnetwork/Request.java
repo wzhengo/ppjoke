@@ -4,6 +4,7 @@ import android.text.TextUtils;
 import android.util.Log;
 
 import androidx.annotation.IntDef;
+import androidx.annotation.NonNull;
 import androidx.arch.core.executor.ArchTaskExecutor;
 
 import com.wz.libnetwork.cache.CacheManger;
@@ -228,5 +229,10 @@ public abstract class Request<T, R extends Request> implements Cloneable {
         }
     }
 
+    @NonNull
+    @Override
+    public Request clone() throws CloneNotSupportedException {
+        return (Request<T, R>) super.clone();
+    }
 
 }

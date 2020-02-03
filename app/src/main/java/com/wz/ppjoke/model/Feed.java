@@ -62,7 +62,7 @@ public class Feed extends BaseObservable implements Serializable {
 
     @Override
     public boolean equals(@Nullable Object obj) {
-        if (obj == null || !(obj instanceof Feed))
+        if (!(obj instanceof Feed))
             return false;
         Feed newFeed = (Feed) obj;
         return id == newFeed.id

@@ -72,7 +72,7 @@ public class Ugc extends BaseObservable implements Serializable {
 
     @Override
     public boolean equals(@Nullable Object obj) {
-        if (obj == null || !(obj instanceof Ugc))
+        if (!(obj instanceof Ugc))
             return false;
         Ugc newUgc = (Ugc) obj;
         return likeCount == newUgc.likeCount

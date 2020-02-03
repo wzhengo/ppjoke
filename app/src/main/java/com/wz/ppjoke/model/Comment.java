@@ -46,7 +46,7 @@ public class Comment extends BaseObservable implements Serializable {
 
     @Override
     public boolean equals(@Nullable Object obj) {
-        if (obj == null || !(obj instanceof Comment))
+        if (!(obj instanceof Comment))
             return false;
 
         Comment newComment = (Comment) obj;
