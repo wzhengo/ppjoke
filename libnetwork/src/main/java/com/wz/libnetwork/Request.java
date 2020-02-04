@@ -206,7 +206,7 @@ public abstract class Request<T, R extends Request> implements Cloneable {
 
     private void saveCache(T body) {
         final String key = TextUtils.isEmpty(cacheKey) ? generateCacheKey() : cacheKey;
-
+        CacheManger.save(key, body);
     }
 
     private String generateCacheKey() {

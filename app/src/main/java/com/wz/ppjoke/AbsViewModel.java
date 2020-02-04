@@ -16,7 +16,7 @@ import androidx.paging.PagedList.BoundaryCallback;
 public abstract class AbsViewModel<T> extends ViewModel {
 
 
-    private final PagedList.Config config;
+    protected final PagedList.Config config;
     private DataSource dataSource;
     private final LiveData<PagedList<T>> pageData;
 
@@ -58,6 +58,7 @@ public abstract class AbsViewModel<T> extends ViewModel {
 
         @Override
         public void onItemAtEndLoaded(@NonNull T itemAtEnd) {
+            //新提交的PagedList中最后一条数据被加载到列表上
 
         }
     };
@@ -80,7 +81,9 @@ public abstract class AbsViewModel<T> extends ViewModel {
         @NonNull
         @Override
         public DataSource create() {
-            dataSource = createDataSource();
+            if (dataSource == null || dataSource.isInvalid()) {
+                dataSource = createDataSource();
+            }
             return dataSource;
         }
     };

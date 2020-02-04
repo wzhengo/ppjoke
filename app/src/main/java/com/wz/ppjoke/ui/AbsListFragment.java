@@ -35,13 +35,13 @@ import java.lang.reflect.Type;
  */
 public abstract class AbsListFragment<T, M extends AbsViewModel<T>> extends Fragment implements OnRefreshListener, OnLoadMoreListener {
 
-    private LayoutRefreshViewBinding binding;
+    protected LayoutRefreshViewBinding binding;
     protected RecyclerView mRecyclerView;
     protected SmartRefreshLayout mRefreshLayout;
     protected EmptyView mEmptyView;
-    private PagedListAdapter<T, RecyclerView.ViewHolder> adapter;
-    private M mViewModel;
-    private DividerItemDecoration decoration;
+    protected PagedListAdapter<T, RecyclerView.ViewHolder> adapter;
+    protected M mViewModel;
+    protected DividerItemDecoration decoration;
 
     @Nullable
     @Override
@@ -65,15 +65,11 @@ public abstract class AbsListFragment<T, M extends AbsViewModel<T>> extends Frag
         decoration.setDrawable(ContextCompat.getDrawable(getContext(), R.drawable.list_divider));
         mRecyclerView.addItemDecoration(decoration);
 
-        afterCreateView();
+        genericViewModel();
         return binding.getRoot();
     }
 
-    protected abstract void afterCreateView();
-
-    @Override
-    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
-        super.onViewCreated(view, savedInstanceState);
+    public void genericViewModel() {
         //利用 子类传递的 泛型参数实例化出absViewModel 对象。
         final ParameterizedType type = (ParameterizedType) getClass().getGenericSuperclass();
         final Type[] arguments = type.getActualTypeArguments();
